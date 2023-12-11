@@ -1,11 +1,17 @@
+export const ALL_BANKS = 'All Banks'
+export const ALL_ATM_TYPES = 'All ATM Types'
+
 export type CityName = string
 export type BankName = string
-export type ATM_type = 'משיכת מזומן' | 'מכשיר מידע/ואו מתן הוראות' | ''
+export type ATM_type =
+	| 'משיכת מזומן'
+	| 'מכשיר מידע/ואו מתן הוראות'
+	| 'All ATM Types'
 
 export type SearchParams = {
 	city: CityName
 	bank: BankName
-	type: ATM_type
+	atmType: ATM_type
 }
 
 export type Bank = {
