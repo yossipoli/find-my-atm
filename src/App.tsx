@@ -1,37 +1,26 @@
-import { Container } from '@mui/material'
+import { Box } from '@mui/material'
 import './App.css'
 import IsraelMap from './components/Map'
 import { useEffect, useState } from 'react'
 import API from './DAL/API'
-import { ATM, Bank, City } from './types/queries'
+import { ATM, Bank, CityName, SearchParams } from './types/Types'
+import Search from './components/Search'
 
 const App = () => {
-	const [cities, setCities] = useState<City[]>([])
-	const [banks, setBanks] = useState<Bank[]>([])
-	const [atm, setAtm] = useState<ATM[]>([])
-
-	useEffect(() => {
-		;(async () => {
-			setCities(await API.getCities())
-			setBanks(await API.getBanks())
-			setAtm(await API.getAtm())
-		})()
-	}, [])
+	const [searchParams, setSearchParams] = useState<SearchParams>({
+		city: '',
+		bank: '',
+		type: '',
+	})
 
 	return (
-		<Container>
-			{/* <IsraelMap /> */}
-			<h1>test</h1>
-			<ul>
-				{atm.map((bank) => (
-					<li>
-						{/* {bank} */}
-						{/* {bank.Bank_Name} */}
-						{/* {bank.Bank_Name}, X={bank.X_Coordinate}, Y= {bank.Y_Coordinate} */}
-					</li>
-				))}
-			</ul>
-		</Container>
+		<Box>
+			<Search
+				searchParams={searchParams}
+				changeParams={(newParams) => setSearchParams(newParams)}
+			/>
+			<IsraelMap />
+		</Box>
 	)
 }
 

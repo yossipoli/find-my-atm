@@ -1,8 +1,12 @@
-import API from './../DAL/API'
-
-export type City = string
-export type ATM_type = 'משיכת מזומן' | 'מכשיר מידע/ואו מתן הוראות'
+export type CityName = string
 export type BankName = string
+export type ATM_type = 'משיכת מזומן' | 'מכשיר מידע/ואו מתן הוראות' | ''
+
+export type SearchParams = {
+	city: CityName
+	bank: BankName
+	type: ATM_type
+}
 
 export type Bank = {
 	_id: number
@@ -12,7 +16,7 @@ export type Bank = {
 	Internet_Address: string
 	Swift_Code: string
 	Address: string
-	City: City
+	City: CityName
 	Zip_Code: string
 	Telephone: string
 	Fax: string
@@ -27,7 +31,7 @@ export type ATM = {
 	Atm_Num: number
 	ATM_Address: string
 	ATM_Address_Extra: string
-	City: City
+	City: CityName
 	Commission: 'לא' | 'כן'
 	ATM_Type: ATM_type
 	ATM_Location: string
@@ -37,4 +41,18 @@ export type ATM = {
 	'rank City': number
 	'rank Bank_Name': number
 	'rank ATM_Type': number
+}
+
+export type City = {
+	_id: number
+	טבלה: 'טבלת ישובים'
+	סמל_ישוב: number
+	שם_ישוב: CityName
+	שם_ישוב_לועזי: CityName
+	סמל_נפה: number
+	שם_נפה: string
+	סמל_לשכת_מנא: number
+	לשכה: string
+	סמל_מועצה_איזורית: number
+	שם_מועצה: string
 }
