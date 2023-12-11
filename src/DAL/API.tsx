@@ -32,7 +32,7 @@ const API = {
 
 	getAtm: async ({ city, bank, atmType }: SearchParams): Promise<ATM[]> => {
 		const query = {
-			City: city,
+			City: city || undefined,
 			Bank_Name: bank === ALL_BANKS ? undefined : bank,
 			ATM_Type: atmType === ALL_ATM_TYPES ? undefined : atmType,
 		}

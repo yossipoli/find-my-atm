@@ -3,14 +3,7 @@ import './App.css'
 import IsraelMap from './components/Map'
 import { useEffect, useState } from 'react'
 import API from './DAL/API'
-import {
-	ALL_ATM_TYPES,
-	ALL_BANKS,
-	ATM,
-	Bank,
-	CityName,
-	SearchParams,
-} from './types/Types'
+import { ALL_ATM_TYPES, ALL_BANKS, ATM, SearchParams } from './types/Types'
 import Search from './components/Search'
 
 const App = () => {
@@ -36,9 +29,9 @@ const App = () => {
 					atms={atms}
 				/>
 			</Box>
-			{/* <Box>
+			<Box>
 				<IsraelMap />
-			</Box> */}
+			</Box>
 		</Box>
 	)
 }

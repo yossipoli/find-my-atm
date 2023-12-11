@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography } from '@mui/material'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-import { ATM, BankName } from '../types/Types'
+import { ATM } from '../types/Types'
 import { FC } from 'react'
 
 type CardComponentProps = {
@@ -27,7 +27,7 @@ const CardComponent: FC<CardComponentProps> = ({ atm }) => {
 					sx={{ fontSize: 14 }}
 					color='text.secondary'
 					gutterBottom>
-					{atm.ATM_Address} | {atm.ATM_Type}
+					{atm.ATM_Address}, {atm.City} | {atm.ATM_Type}
 				</Typography>
 			</CardContent>
 		</Card>
