@@ -14,7 +14,7 @@ const App = () => {
 	})
 
 	return (
-		<Box>
+		<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 			<Search
 				searchParams={searchParams}
 				changeParams={(newParams) => setSearchParams(newParams)}
