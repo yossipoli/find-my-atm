@@ -1,25 +1,35 @@
 import 'leaflet/dist/leaflet.css'
-import { divIcon, LatLngBoundsLiteral } from 'leaflet'
+import { divIcon, latLngBounds, LatLngBoundsExpression } from 'leaflet'
 import { FC } from 'react'
-import { MapContainer, Marker, TileLayer } from 'react-leaflet'
-import LocationOn from '@mui/icons-material/LocationOn'
-import { renderToStaticMarkup } from 'react-dom/server'
+import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import { renderToString } from 'react-dom/server'
 import { ATM } from '../types/Types'
 
 type IsraelMapProps = {
 	atms: ATM[]
 }
 
-const israelMap: FC<IsraelMapProps> = ({ atms }) => {
-	const israelBounds: LatLngBoundsLiteral = [
-		[29.45, 34.267], // Southwest coordinates
-		[33.333, 35.897], // Northeast coordinates
-	]
+const BoundsManager = ({ bounds }: { bounds: LatLngBoundsExpression }) => {
+	const map = useMap()
+	map.fitBounds(bounds)
+	return null
+}
 
-	const iconMarkup = renderToStaticMarkup(<LocationOn />)
+const IsraelMap: FC<IsraelMapProps> = ({ atms }) => {
+	const atmsBounds = atms.length
+		? latLngBounds(atms.map((atm) => [atm.X_Coordinate, atm.Y_Coordinate]))
+		: undefined
+
+	const iconMarkup = (
+		<LocationOnIcon
+			fontSize='large'
+			sx={{ color: 'blue' }}
+		/>
+	)
 
 	const markerIcon = divIcon({
-		html: iconMarkup,
+		html: renderToString(iconMarkup),
 	})
 
 	return (
@@ -28,18 +38,16 @@ const israelMap: FC<IsraelMapProps> = ({ atms }) => {
 				width: '100%',
 				height: '100vh',
 			}}
-			center={[31.5, 34.8]}
-			zoom={7.5}
-			scrollWheelZoom={true}
-			maxBounds={israelBounds}>
+			scrollWheelZoom={true}>
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 			/>
+			{atmsBounds ? <BoundsManager bounds={atmsBounds} /> : null}
 			{atms.map((atm) => (
 				<Marker
 					key={atm._id}
-					position={[atm.X_Coordinate ?? 31.5, atm.Y_Coordinate ?? 34.8]}
+					position={[atm.X_Coordinate, atm.Y_Coordinate]}
 					icon={markerIcon}
 				/>
 			))}
@@ -47,4 +55,4 @@ const israelMap: FC<IsraelMapProps> = ({ atms }) => {
 	)
 }
 
-export default israelMap
+export default IsraelMap
