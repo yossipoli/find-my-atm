@@ -6,9 +6,10 @@ import CardComponent from './Card'
 type CardListProps = {
 	atms: ATM[]
 	onCardClick: (selectedAtm: ATM) => void
+	selectedAtmId: number
 }
 
-const CardList: FC<CardListProps> = ({ atms, onCardClick }) => {
+const CardList: FC<CardListProps> = ({ atms, onCardClick, selectedAtmId }) => {
 	return (
 		<Box sx={{ maxHeight: '75vh', overflow: 'hidden', overflowY: 'scroll' }}>
 			{atms.map((atm) => (
@@ -16,6 +17,7 @@ const CardList: FC<CardListProps> = ({ atms, onCardClick }) => {
 					key={atm._id}
 					atm={atm}
 					onClick={onCardClick}
+					selectedAtmId={selectedAtmId}
 				/>
 			))}
 		</Box>

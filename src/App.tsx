@@ -53,7 +53,7 @@ const App = () => {
 
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'row' }}>
-			<Box>
+			<Box sx={{ width: '40%' }}>
 				<Search
 					searchParams={searchParams}
 					changeParams={(newParams) => setSearchParams(newParams)}
@@ -62,6 +62,7 @@ const App = () => {
 				<CardList
 					atms={atms}
 					onCardClick={selectAtm}
+					selectedAtmId={selectedAtm?._id || -1}
 				/>
 			</Box>
 			<IsraelMap atms={selectedAtm ? [selectedAtm] : atms} />

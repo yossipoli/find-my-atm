@@ -6,9 +6,14 @@ import { FC } from 'react'
 type CardComponentProps = {
 	atm: ATM
 	onClick: (selectedAtm: ATM) => void
+	selectedAtmId: number
 }
 
-const CardComponent: FC<CardComponentProps> = ({ atm, onClick }) => {
+const CardComponent: FC<CardComponentProps> = ({
+	atm,
+	onClick,
+	selectedAtmId,
+}) => {
 	return (
 		<Card
 			sx={{
@@ -18,6 +23,7 @@ const CardComponent: FC<CardComponentProps> = ({ atm, onClick }) => {
 				margin: '3px 0',
 				boxShadow: '1px 1px 1px',
 				cursor: 'pointer',
+				backgroundColor: atm._id === selectedAtmId ? 'lightgrey' : 'white',
 			}}
 			onClick={() => onClick(atm)}>
 			<CardContent>
