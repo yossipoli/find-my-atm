@@ -9,11 +9,11 @@ import {
 } from '../types/Types'
 
 const API_URL = 'https://data.gov.il/api/3/action/datastore_search'
-const CITIES_RESOURCE = 'd4901968-dad3-4845-a9b0-a57d027f11ab'
 const BANKS_RESOURCE =
 	'ebb61778-e34c-4e67-8fcf-0e643d9cf8c2&q={"Category":"בנקים רגילים"}'
 const ATM_RESOURCE = 'b9d690de-0a9c-45ef-9ced-3e5957776b26'
-export const ISRAEL_BOUNDS = latLngBounds(
+
+const ISRAEL_BOUNDS = latLngBounds(
 	latLng(29.45, 34.267), // Southwest coordinates
 	latLng(33.333, 35.897) // Northeast coordinates
 )
@@ -52,6 +52,7 @@ const API = {
 
 		const res = await fetch(`${API_URL}?${urlSearchParams.toString()}`)
 		const atmsResult = await res.json()
+
 		return filterIsraelATMs(atmsResult.result.records)
 	},
 }

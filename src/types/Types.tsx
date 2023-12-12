@@ -5,7 +5,7 @@ export type CityName = string
 export type BankName = string
 export type ATM_type =
 	| 'משיכת מזומן'
-	| 'מכשיר מידע/ואו מתן הוראות'
+	| 'מכשיר מידע/או מתן הוראות'
 	| 'All ATM Types'
 
 export type SearchParams = {

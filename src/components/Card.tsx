@@ -29,7 +29,9 @@ const CardComponent: FC<CardComponentProps> = ({
 			<CardContent>
 				<LocationOnIcon
 					fontSize='large'
-					sx={{ color: atm.ATM_Type === 'משיכת מזומן' ? 'orange' : 'blue' }}
+					sx={{
+						color: atm.ATM_Type === 'משיכת מזומן' ? 'orange' : 'DodgerBlue',
+					}}
 				/>
 			</CardContent>
 			<CardContent>

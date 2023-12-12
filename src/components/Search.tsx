@@ -61,8 +61,8 @@ const Search: FC<SearchProps> = ({ searchParams, changeParams, banks }) => {
 					onChange={(e) => onChange('ATM_Type', e.target.value)}>
 					<MenuItem value={ALL_ATM_TYPES}>כל הבנקטים</MenuItem>
 					<MenuItem value={'משיכת מזומן'}>משיכת מזומן</MenuItem>
-					<MenuItem value={'מכשיר מידע/ואו מתן הוראות'}>
-						מכשיר מידע/ואו מתן הוראות
+					<MenuItem value={'מכשיר מידע/או מתן הוראות'}>
+						מכשיר מידע/או מתן הוראות
 					</MenuItem>
 				</Select>
 			</Box>

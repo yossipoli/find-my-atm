@@ -53,7 +53,7 @@ const IsraelMap: FC<IsraelMapProps> = ({ atms }) => {
 					key={atm._id}
 					position={[atm.X_Coordinate, atm.Y_Coordinate]}
 					icon={markerIconCreator(
-						atm.ATM_Type === 'משיכת מזומן' ? 'orange' : 'blue'
+						atm.ATM_Type === 'משיכת מזומן' ? 'orange' : 'DodgerBlue'
 					)}
 				/>
 			))}
