@@ -1,4 +1,4 @@
-// import 'leaflet/dist/leaflet.css'
+import 'leaflet/dist/leaflet.css'
 import { LatLngBoundsLiteral } from 'leaflet'
 import { FC } from 'react'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
@@ -11,12 +11,12 @@ const israelMap: FC = () => {
 	return (
 		<MapContainer
 			style={{
-				width: '80%',
+				width: '100%',
 				height: '100vh',
 			}}
 			center={[31.5, 34.8]}
-			zoom={5}
-			scrollWheelZoom={false}
+			zoom={7.5}
+			scrollWheelZoom={true}
 			maxBounds={israelBounds}>
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

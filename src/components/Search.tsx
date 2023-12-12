@@ -47,12 +47,12 @@ const Search: FC<SearchProps> = ({ searchParams, changeParams, atms }) => {
 		})()
 	}, [])
 	return (
-		<Box width={400}>
+		<Box>
 			<Autocomplete
 				disablePortal
 				value={searchParams.city}
 				options={cities}
-				sx={{ width: 400 }}
+				sx={{ width: '100%' }}
 				renderInput={(params) => (
 					<TextField
 						{...params}
@@ -71,9 +71,8 @@ const Search: FC<SearchProps> = ({ searchParams, changeParams, atms }) => {
 			/>
 			<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 				<Select
-					label='כל הבנקים'
 					value={searchParams.bank}
-					sx={{ width: 200 }}
+					sx={{ width: '50%' }}
 					onChange={(e) => onChange('bank', e.target.value)}>
 					<MenuItem value={ALL_BANKS}>כל הבנקים</MenuItem>
 					{banks.map((bank: BankName) => (
@@ -86,9 +85,8 @@ const Search: FC<SearchProps> = ({ searchParams, changeParams, atms }) => {
 				</Select>
 
 				<Select
-					label='כל סוגי הבנקטים'
 					value={searchParams.atmType}
-					sx={{ width: 200 }}
+					sx={{ width: '50%' }}
 					onChange={(e) => onChange('atmType', e.target.value)}>
 					<MenuItem value={ALL_ATM_TYPES}>כל הבנקטים</MenuItem>
 					<MenuItem value={'משיכת מזומן'}>משיכת מזומן</MenuItem>
@@ -102,7 +100,7 @@ const Search: FC<SearchProps> = ({ searchParams, changeParams, atms }) => {
 				sx={{ margin: '20px' }}
 				flexItem
 			/>
-			<Box>
+			<Box sx={{ maxHeight: '75vh', overflow: 'hidden', overflowY: 'scroll' }}>
 				{atms.map((atm) => (
 					<CardComponent
 						key={atm._id}

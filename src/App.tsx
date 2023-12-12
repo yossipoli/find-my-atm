@@ -22,14 +22,14 @@ const App = () => {
 
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'row' }}>
-			<Box>
+			<Box sx={{ width: '30%', height: '100vh' }}>
 				<Search
 					searchParams={searchParams}
 					changeParams={(newParams) => setSearchParams(newParams)}
 					atms={atms}
 				/>
 			</Box>
-			<Box>
+			<Box sx={{ width: '70%', height: '100vh' }}>
 				<IsraelMap />
 			</Box>
 		</Box>

@@ -9,16 +9,23 @@ type CardComponentProps = {
 
 const CardComponent: FC<CardComponentProps> = ({ atm }) => {
 	return (
-		<Card sx={{ display: 'flex', flexDirection: 'row' }}>
+		<Card
+			sx={{
+				display: 'flex',
+				flexDirection: 'row',
+				border: '1px solid lightgrey',
+				margin: '3px 0',
+				boxShadow: '1px 1px 1px',
+			}}>
 			<CardContent>
 				<LocationOnIcon
-					fontSize='large'
+					fontSize='medium'
 					sx={{ color: atm.ATM_Type === 'משיכת מזומן' ? 'orange' : 'blue' }}
 				/>
 			</CardContent>
 			<CardContent>
 				<Typography
-					variant='h5'
+					variant='h6'
 					component='div'>
 					{atm.Bank_Code}-{atm.Bank_Name}
 				</Typography>
