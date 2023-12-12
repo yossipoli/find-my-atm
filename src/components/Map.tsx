@@ -10,7 +10,7 @@ type IsraelMapProps = {
 	atms: ATM[]
 }
 
-const BoundsManager = ({ bounds }: { bounds: LatLngBoundsExpression }) => {
+const BoundsManager: FC<{ bounds: LatLngBoundsExpression }> = ({ bounds }) => {
 	const map = useMap()
 	map.fitBounds(bounds)
 	return null
@@ -21,16 +21,18 @@ const IsraelMap: FC<IsraelMapProps> = ({ atms }) => {
 		? latLngBounds(atms.map((atm) => [atm.X_Coordinate, atm.Y_Coordinate]))
 		: undefined
 
-	const iconMarkup = (
+	const iconMarkup = (color: string) => (
 		<LocationOnIcon
 			fontSize='large'
-			sx={{ color: 'blue' }}
+			sx={{ color: color }}
 		/>
 	)
 
-	const markerIcon = divIcon({
-		html: renderToString(iconMarkup),
-	})
+	const markerIconCreator = (color: string) =>
+		divIcon({
+			html: renderToString(iconMarkup(color)),
+			iconSize: [0, 0],
+		})
 
 	return (
 		<MapContainer
@@ -48,7 +50,9 @@ const IsraelMap: FC<IsraelMapProps> = ({ atms }) => {
 				<Marker
 					key={atm._id}
 					position={[atm.X_Coordinate, atm.Y_Coordinate]}
-					icon={markerIcon}
+					icon={markerIconCreator(
+						atm.ATM_Type === 'משיכת מזומן' ? 'orange' : 'blue'
+					)}
 				/>
 			))}
 		</MapContainer>
