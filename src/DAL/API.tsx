@@ -13,7 +13,7 @@ const CITIES_RESOURCE = 'd4901968-dad3-4845-a9b0-a57d027f11ab'
 const BANKS_RESOURCE =
 	'ebb61778-e34c-4e67-8fcf-0e643d9cf8c2&q={"Category":"בנקים רגילים"}'
 const ATM_RESOURCE = 'b9d690de-0a9c-45ef-9ced-3e5957776b26'
-const ISRAEL_BOUNDS = latLngBounds(
+export const ISRAEL_BOUNDS = latLngBounds(
 	latLng(29.45, 34.267), // Southwest coordinates
 	latLng(33.333, 35.897) // Northeast coordinates
 )
@@ -34,11 +34,15 @@ const API = {
 		return banks.result.records.map((bank: Bank) => bank.Bank_Name)
 	},
 
-	getAtm: async ({ city, bank, atmType }: SearchParams): Promise<ATM[]> => {
+	getAtm: async ({
+		City,
+		Bank_Name,
+		ATM_Type,
+	}: SearchParams): Promise<ATM[]> => {
 		const query = {
-			City: city || undefined,
-			Bank_Name: bank === ALL_BANKS ? undefined : bank,
-			ATM_Type: atmType === ALL_ATM_TYPES ? undefined : atmType,
+			City: City || undefined,
+			Bank_Name: Bank_Name === ALL_BANKS ? undefined : Bank_Name,
+			ATM_Type: ATM_Type === ALL_ATM_TYPES ? undefined : ATM_Type,
 		}
 
 		const urlSearchParams = new URLSearchParams({

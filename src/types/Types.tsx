@@ -9,9 +9,9 @@ export type ATM_type =
 	| 'All ATM Types'
 
 export type SearchParams = {
-	city: CityName
-	bank: BankName
-	atmType: ATM_type
+	City: CityName
+	Bank_Name: BankName
+	ATM_Type: ATM_type
 }
 
 export type Bank = {

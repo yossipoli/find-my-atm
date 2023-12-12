@@ -32,6 +32,8 @@ const IsraelMap: FC<IsraelMapProps> = ({ atms }) => {
 		divIcon({
 			html: renderToString(iconMarkup(color)),
 			iconSize: [0, 0],
+			iconAnchor: [0, 0],
+			popupAnchor: [0, 0],
 		})
 
 	return (

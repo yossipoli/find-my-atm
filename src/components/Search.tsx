@@ -17,7 +17,7 @@ type SearchProps = {
 const Search: FC<SearchProps> = ({ searchParams, changeParams, banks }) => {
 	const onChange = (
 		id: keyof SearchParams,
-		value: SearchParams['city' | 'bank' | 'atmType']
+		value: SearchParams['City' | 'Bank_Name' | 'ATM_Type']
 	) => {
 		const newParams = { ...searchParams, [id]: value }
 		changeParams(newParams)
@@ -31,10 +31,10 @@ const Search: FC<SearchProps> = ({ searchParams, changeParams, banks }) => {
 					marginTop: '5px',
 				}}
 				label='חיפוש לפי עיר'
-				onChange={(e) => onChange('city', e.target.value)}
+				onChange={(e) => onChange('City', e.target.value)}
 				InputProps={{
-					endAdornment: (
-						<InputAdornment position='end'>
+					startAdornment: (
+						<InputAdornment position='start'>
 							<SearchIcon />
 						</InputAdornment>
 					),
@@ -42,9 +42,9 @@ const Search: FC<SearchProps> = ({ searchParams, changeParams, banks }) => {
 			/>
 			<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 				<Select
-					value={searchParams.bank}
+					value={searchParams.Bank_Name}
 					sx={{ width: '50%' }}
-					onChange={(e) => onChange('bank', e.target.value)}>
+					onChange={(e) => onChange('Bank_Name', e.target.value)}>
 					<MenuItem value={ALL_BANKS}>כל הבנקים</MenuItem>
 					{banks.map((bank: BankName) => (
 						<MenuItem
@@ -56,9 +56,9 @@ const Search: FC<SearchProps> = ({ searchParams, changeParams, banks }) => {
 				</Select>
 
 				<Select
-					value={searchParams.atmType}
+					value={searchParams.ATM_Type}
 					sx={{ width: '50%' }}
-					onChange={(e) => onChange('atmType', e.target.value)}>
+					onChange={(e) => onChange('ATM_Type', e.target.value)}>
 					<MenuItem value={ALL_ATM_TYPES}>כל הבנקטים</MenuItem>
 					<MenuItem value={'משיכת מזומן'}>משיכת מזומן</MenuItem>
 					<MenuItem value={'מכשיר מידע/ואו מתן הוראות'}>

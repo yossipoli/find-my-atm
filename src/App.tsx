@@ -22,14 +22,14 @@ const App = () => {
 	const [selectedAtm, setSelectedAtm] = useState<ATM>()
 	const [searchParams, setSearchParams] = useDebounce<SearchParams>(
 		{
-			city: '',
-			bank: ALL_BANKS,
-			atmType: ALL_ATM_TYPES,
+			City: '',
+			Bank_Name: ALL_BANKS,
+			ATM_Type: ALL_ATM_TYPES,
 		},
 		SEARCH_DEBOUNCE_DELAY,
 		{
 			equalityFn: (oldSearchParams, newSearchParams) =>
-				oldSearchParams.city === newSearchParams.city,
+				oldSearchParams.City === newSearchParams.City,
 		}
 	)
 	useEffect(() => {
