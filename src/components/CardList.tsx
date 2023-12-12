@@ -5,7 +5,7 @@ import CardComponent from './Card'
 
 type CardListProps = {
 	atms: ATM[]
-	onCardClick: (selectedAtm: ATM) => void
+	onCardClick: (selectedAtm: ATM | undefined) => void
 	selectedAtmId: number
 }
 

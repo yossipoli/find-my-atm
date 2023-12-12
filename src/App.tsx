@@ -47,10 +47,6 @@ const App = () => {
 		})()
 	}, [])
 
-	const selectAtm = (atm: ATM) => {
-		setSelectedAtm(atm)
-	}
-
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 			<Box sx={{ width: '40%' }}>
@@ -61,7 +57,7 @@ const App = () => {
 				/>
 				<CardList
 					atms={atms}
-					onCardClick={selectAtm}
+					onCardClick={(atm) => setSelectedAtm(atm)}
 					selectedAtmId={selectedAtm?._id || -1}
 				/>
 			</Box>

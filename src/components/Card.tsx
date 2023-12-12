@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 type CardComponentProps = {
 	atm: ATM
-	onClick: (selectedAtm: ATM) => void
+	onClick: (selectedAtm: ATM | undefined) => void
 	selectedAtmId: number
 }
 
@@ -25,7 +25,7 @@ const CardComponent: FC<CardComponentProps> = ({
 				cursor: 'pointer',
 				backgroundColor: atm._id === selectedAtmId ? 'lightgrey' : 'white',
 			}}
-			onClick={() => onClick(atm)}>
+			onClick={() => onClick(atm._id === selectedAtmId ? undefined : atm)}>
 			<CardContent>
 				<LocationOnIcon
 					fontSize='large'
