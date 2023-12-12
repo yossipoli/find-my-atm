@@ -1,13 +1,27 @@
 import 'leaflet/dist/leaflet.css'
-import { LatLngBoundsLiteral } from 'leaflet'
+import { divIcon, LatLngBoundsLiteral } from 'leaflet'
 import { FC } from 'react'
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, TileLayer } from 'react-leaflet'
+import LocationOn from '@mui/icons-material/LocationOn'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { ATM } from '../types/Types'
 
-const israelMap: FC = () => {
+type IsraelMapProps = {
+	atms: ATM[]
+}
+
+const israelMap: FC<IsraelMapProps> = ({ atms }) => {
 	const israelBounds: LatLngBoundsLiteral = [
 		[29.45, 34.267], // Southwest coordinates
 		[33.333, 35.897], // Northeast coordinates
 	]
+
+	const iconMarkup = renderToStaticMarkup(<LocationOn />)
+
+	const markerIcon = divIcon({
+		html: iconMarkup,
+	})
+
 	return (
 		<MapContainer
 			style={{
@@ -22,11 +36,13 @@ const israelMap: FC = () => {
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 			/>
-			{/* <Marker position={[51.505, -0.09]}>
-				<Popup>
-					A pretty CSS3 popup. <br /> Easily customizable.
-				</Popup>
-			</Marker> */}
+			{atms.map((atm) => (
+				<Marker
+					key={atm._id}
+					position={[atm.X_Coordinate ?? 31.5, atm.Y_Coordinate ?? 34.8]}
+					icon={markerIcon}
+				/>
+			))}
 		</MapContainer>
 	)
 }

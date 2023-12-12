@@ -30,7 +30,7 @@ const App = () => {
 				/>
 			</Box>
 			<Box sx={{ width: '70%', height: '100vh' }}>
-				<IsraelMap />
+				<IsraelMap atms={atms} />
 			</Box>
 		</Box>
 	)
