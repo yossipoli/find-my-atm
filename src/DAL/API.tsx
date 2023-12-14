@@ -48,6 +48,8 @@ const API = {
 		const urlSearchParams = new URLSearchParams({
 			resource_id: ATM_RESOURCE,
 			filters: JSON.stringify(query),
+			limit: '40',
+			offset: '0',
 		})
 
 		const res = await fetch(`${API_URL}?${urlSearchParams.toString()}`)
